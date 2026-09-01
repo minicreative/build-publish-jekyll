@@ -9,6 +9,10 @@ on:
         description: The name of your Kubernetes Deployment resource to update with your latest image tag
         required: true
         type: string
+      install_image_magick:
+        description: Whether to install ImageMagick
+        required: false
+        type: boolean
     secrets:
       docker_username:
         description: Your DockerHub username
@@ -30,6 +34,9 @@ jobs:
       uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
       with:
         ruby-version: '2.7'
+    - name: Install ImageMagick if required
+      if: inputs.install_image_magick == true
+      run: sudo apt install imagemagick -y
     - name: Install dependencies
       run: bundle install
     - name: Build Jekyll site
