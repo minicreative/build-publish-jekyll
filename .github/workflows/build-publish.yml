@@ -36,7 +36,7 @@ jobs:
         ruby-version: '2.7'
     - name: Install ImageMagick if required
       if: inputs.install_image_magick == 'true'
-      run: sudo apt install imagemagick -y
+      run: sudo apt update && sudo apt install imagemagick -y
     - name: Install dependencies
       run: bundle install
     - name: Build Jekyll site
