@@ -33,7 +33,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
       with:
-        ruby-version: '2.6'
+        ruby-version: '3.3'
     - name: Install ImageMagick if required
       if: inputs.install_image_magick == 'true'
       run: sudo apt update && sudo apt install imagemagick -y
